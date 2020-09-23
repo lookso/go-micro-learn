@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package go.micro.service.orders;
-option go_package = "proto/orders";
+option go_package = "proto/orders;orders";
 service Orders {
 	rpc Call(Request) returns (Response) {}
 	rpc Stream(StreamingRequest) returns (stream StreamingResponse) {}

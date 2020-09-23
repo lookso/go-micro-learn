@@ -5,7 +5,7 @@ import (
 
 	log "github.com/micro/go-micro/v2/logger"
 
-	products "products/proto/products"
+	products "go-micro-learn/products/proto/products"
 )
 
 type Products struct{}

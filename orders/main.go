@@ -1,12 +1,11 @@
 package main
 
 import (
-	log "github.com/micro/go-micro/v3/logger"
-	"github.com/micro/go-micro"
-	"orders/handler"
-	"orders/subscriber"
+	log "github.com/micro/go-micro/v2/logger"
+	micro "github.com/micro/go-micro/v2"
+	"go-micro-learn/orders/handler"
 
-	orders "orders/proto/orders"
+	orders "go-micro-learn/orders/proto/orders"
 )
 
 func main() {
@@ -21,9 +20,6 @@ func main() {
 
 	// Register Handler
 	orders.RegisterOrdersHandler(service.Server(), new(handler.Orders))
-
-	// Register Struct as Subscriber
-	micro.RegisterSubscriber("go.micro.service.orders", service.Server(), new(subscriber.Orders))
 
 	// Run service
 	if err := service.Run(); err != nil {

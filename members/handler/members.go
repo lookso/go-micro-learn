@@ -3,9 +3,9 @@ package handler
 import (
 	"context"
 
-	log "github.com/micro/go-micro/v3/logger"
+	log "github.com/micro/go-micro/v2/logger"
 
-	members "members/proto/members"
+	members "go-micro-learn/members/proto/members"
 )
 
 type Members struct{}

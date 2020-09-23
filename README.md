@@ -1,4 +1,4 @@
-# micro-server
+# micro-server v2版本
 微服务架构实践
 
 ### 目录结构,每个目录代表一个独立的系统服务
@@ -37,3 +37,9 @@ micro status
 
 micro env set local
 micro env
+
+列出已经注册的服务
+peanut-b360hd3 :: ~ » micro list services
+go.micro.service.members
+go.micro.service.orders
+go.micro.service.products

@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 package go.micro.service.members;
-option go_package = "proto/members";
+option go_package = "proto/members;members";
 service Members {
 	rpc Call(Request) returns (Response) {}
 	rpc Stream(StreamingRequest) returns (stream StreamingResponse) {}
