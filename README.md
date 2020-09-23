@@ -20,8 +20,11 @@
 ```
 
 ### 接入计划
+- [x] Gin框架
 - [ ] 引入ZipKin 分布式链路追踪
-- [ ] GRpc
+- [ ] GRpc,Gateway
+- [ ] Etcd
+- [ ] ApiGateway
 
 ```
 生成pb文件和micro文件
