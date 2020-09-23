@@ -36,10 +36,13 @@ micro run members
 micro status
 
 micro env set local
-micro env
+» micro env
+* local      none
+  server     127.0.0.1:8081
+  platform   proxy.micro.mu
 
 列出已经注册的服务
-peanut-b360hd3 :: ~ » micro list services
+» micro list services
 go.micro.service.members
 go.micro.service.orders
 go.micro.service.products
