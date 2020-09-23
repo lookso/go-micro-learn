@@ -1,4 +1,4 @@
-package handler
+package rpcs
 
 import (
 	"context"

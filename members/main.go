@@ -7,13 +7,14 @@ import (
 	"github.com/micro/go-micro/v2/registry"
 	"github.com/micro/go-micro/v2/registry/etcd"
 	"github.com/micro/go-micro/v2/web"
-	"go-micro-learn/members/handler"
+	"go-micro-learn/members/handler/rpcs"
 	"go-micro-learn/members/model"
 	"go-micro-learn/members/proto/members"
 	"go-micro-learn/members/router"
 )
 
 func main() {
+
 	// 启动etcd集群
 	etcdReg := etcd.NewRegistry(
 		registry.Addrs("127.0.0.1:2379"),
@@ -35,8 +36,6 @@ func main() {
 		web.Action(func(c *cli.Context) {
 			// 初始化模型层
 			model.Init()
-			// 初始化handler
-			handler.Init()
 		}),
 	)
 	webService.Run()
@@ -50,11 +49,10 @@ func main() {
 	// Initialise service
 	grpcService.Init()
 	//Register Handler
-	members.RegisterMembersHandler(grpcService.Server(), new(handler.Members))
+	members.RegisterMembersHandler(grpcService.Server(), new(rpcs.Members))
 
 	// Run service
 	if err := grpcService.Run(); err != nil {
 		log.Fatal(err)
 	}
-
 }
