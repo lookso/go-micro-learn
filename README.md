@@ -20,6 +20,7 @@
     │   └── products
     └── subscriber
 
+
 ```
 
 ### 接入计划
@@ -28,7 +29,7 @@
 
 ```
 生成pb文件和micro文件
-make proto
+cd members && make proto
 or
 protoc --proto_path=. --micro_out=Mproto/imports/api.proto=github.com/micro/go-micro/v2/api/proto:. --go_out=Mproto/imports/api.proto=github.com/micro/go-micro/v2/api/proto:. proto/members/members.proto
 
@@ -53,6 +54,6 @@ go.micro.service.orders
 go.micro.service.products
 ```
 
-参考文档:
+micro参考文档:
 https://xueyuanjun.com/post/20965#toc-2
 https://github.com/micro-in-cn/tutorials/tree/master/microservice-in-micro
