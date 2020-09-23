@@ -52,5 +52,6 @@ go.micro.service.products
 ```
 
 micro参考文档:
+```
 https://xueyuanjun.com/post/20965#toc-2
 https://github.com/micro-in-cn/tutorials/tree/master/microservice-in-micro
