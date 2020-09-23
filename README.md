@@ -27,11 +27,16 @@
 - [ ] GRpc
 
 ```
-protoc --proto_path=. --micro_out=Mproto/imports/api.proto=github.com/micro/go-micro/v2/api/proto:. --go_out=Mproto/imports/api.proto=github.com/micro/go-micro/v2/api/proto:. proto/posts/posts.proto
+生成pb文件和micro文件
+make proto
+or
+protoc --proto_path=. --micro_out=Mproto/imports/api.proto=github.com/micro/go-micro/v2/api/proto:. --go_out=Mproto/imports/api.proto=github.com/micro/go-micro/v2/api/proto:. proto/members/members.proto
 
 ### micro cmd
 micro server &
+生成模板文件
 micro new members
+subscriber是用来订阅服务的,目前用不到可以删除,然后可以删除go.mod之类的文件,自己go mod init去生成
 micro run members
 micro status
 
