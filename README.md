@@ -17,6 +17,10 @@
     ├── proto
     │   └── products
 
+系统调用关系
+members  grpc提供 user/info 调用 orders/list 查看订单列表
+products 调用 user/info grpc提供 product/info
+orders   调用 user/info和product/info grpc提供 order/list
 ```
 
 ### 接入计划

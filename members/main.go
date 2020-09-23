@@ -3,6 +3,8 @@ package main
 import (
 	"github.com/micro/go-micro/v2"
 	log "github.com/micro/go-micro/v2/logger"
+	"github.com/micro/go-micro/v2/registry"
+	"github.com/micro/go-micro/v2/registry/etcd"
 	"github.com/micro/go-micro/v2/web"
 	"go-micro-learn/members/handler"
 	"go-micro-learn/members/proto/members"
@@ -10,10 +12,20 @@ import (
 )
 
 func main() {
+	// 服务发现
+	etcdReg := etcd.NewRegistry(
+		registry.Addrs("127.0.0.1:2379"),
+	)
 	gr := router.InitRouters()
-	webService := web.NewService(web.Name("members-gin-web"), web.Address(":8090"), web.Handler(gr))
+	webService := web.NewService(
+		web.Name("micro-members-web-api"),
+		web.Address(":8090"),
+		web.Handler(gr),
+		web.Registry(etcdReg),
+	)
 	webService.Run()
 
+	// grpc服务
 	//New Service
 	service := micro.NewService(
 		micro.Name("go.micro.service.members"),
