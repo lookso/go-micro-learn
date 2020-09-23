@@ -26,7 +26,7 @@
 - [ ] 引入ZipKin 分布式链路追踪
 - [ ] GRpc
 
-
+```
 protoc --proto_path=. --micro_out=Mproto/imports/api.proto=github.com/micro/go-micro/v2/api/proto:. --go_out=Mproto/imports/api.proto=github.com/micro/go-micro/v2/api/proto:. proto/posts/posts.proto
 
 ### micro cmd
@@ -46,3 +46,4 @@ micro env set local
 go.micro.service.members
 go.micro.service.orders
 go.micro.service.products
+```
