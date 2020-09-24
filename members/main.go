@@ -11,6 +11,7 @@ import (
 	"go-micro-learn/members/model"
 	"go-micro-learn/members/proto/members"
 	"go-micro-learn/members/router"
+	"sync"
 )
 
 func main() {
@@ -31,28 +32,42 @@ func main() {
 	// micro/registry/micro-members-web-api/0af17e80-48f1-4977-978b-8e0cf0aed164
 	//{"name":"micro-members-web-api","version":"latest","metadata":null,"endpoints":null, "nodes":[{"id":"0af17e80-48f1-4977-978b-8e0cf0aed164","address":"10.60.103.159:8090","metadata":null}]}
 
-	// 服务初始化
+	// web服务初始化
 	webService.Init(
 		web.Action(func(c *cli.Context) {
 			// 初始化模型层
 			model.Init()
 		}),
 	)
-	webService.Run()
 
 	// grpc服务
 	//New Service
 	grpcService := micro.NewService(
 		micro.Name("go.micro.service.members"),
 		micro.Version("latest"),
+		micro.Registry(etcdReg), // 服务注册
 	)
 	// Initialise service
 	grpcService.Init()
+
 	//Register Handler
 	members.RegisterMembersHandler(grpcService.Server(), new(rpcs.Members))
 
-	// Run service
-	if err := grpcService.Run(); err != nil {
-		log.Fatal(err)
-	}
+	var wg sync.WaitGroup
+	wg.Add(2)
+	go func() {
+		defer wg.Done()
+		// Run service
+		if err := grpcService.Run(); err != nil {
+			log.Fatal(err)
+		}
+	}()
+	go func() {
+		defer wg.Done()
+		if err := webService.Run(); err != nil {
+			log.Fatal(err)
+		}
+	}()
+
+	wg.Wait()
 }
