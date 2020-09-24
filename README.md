@@ -60,6 +60,11 @@ go.micro.service.products
 
 go run main.go plugin.go --registry=etcd --registry_address=localhost:2379
 micro web --registry=etcd --registry_address=127.0.0.1:2379
+
+micro --registry etcd --registry_address 127.0.0.1:2379 list services
+micro-grpc-members-service
+micro-web-members-service
+
 micro参考文档:
 
 - https://xueyuanjun.com/post/20965#toc-2
