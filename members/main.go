@@ -22,7 +22,7 @@ func main() {
 	)
 	gr := router.InitRouters()
 	webService := web.NewService(
-		web.Name("micro-members-web-api"),
+		web.Name("micro-web-members-service"),
 		web.Address(":8090"),
 		web.Handler(gr),
 		web.Registry(etcdReg), // 服务注册
@@ -43,7 +43,7 @@ func main() {
 	// grpc服务
 	//New Service
 	grpcService := micro.NewService(
-		micro.Name("go.micro.service.members"),
+		micro.Name("micro-grpc-members-service"),
 		micro.Version("latest"),
 		micro.Registry(etcdReg), // 服务注册
 	)
