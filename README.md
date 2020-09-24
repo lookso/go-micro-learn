@@ -65,6 +65,15 @@ micro --registry etcd --registry_address 127.0.0.1:2379 list services
 micro-grpc-members-service
 micro-web-members-service
 
+获取服务信息
+micro --registry etcd --registry_address 127.0.0.1:2379 get service micro-web-members-service
+
+todo
+https://blog.csdn.net/weixin_30746129/article/details/104855246
+micro --registry etcd --registry_address 127.0.0.1:2379 call micro-grpc-members-service membersService.Call "{\"name\":3}"
+
+
+
 micro参考文档:
 
 - https://xueyuanjun.com/post/20965#toc-2
