@@ -11,7 +11,7 @@ import (
 func main() {
 	registry := etcd.NewRegistry(registry.Addrs("127.0.0.1:2379"))
 
-	webService, err := registry.GetService("go.micro.service.orders")
+	webService, err := registry.GetService("micro-grpc-members-service")
 	// 从etcd中获取服务信息
 	//Address:10.60.103.159:8090 , Id:0af17e80-48f1-4977-978b-8e0cf0aed164 ,Metadata:map[]
 	if err != nil {
