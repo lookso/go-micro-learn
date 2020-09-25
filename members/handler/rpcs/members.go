@@ -5,7 +5,7 @@ import (
 
 	log "github.com/micro/go-micro/v2/logger"
 
-	members "go-micro-learn/members/proto/members"
+	"go-micro-learn/members/proto/members"
 )
 
 type Members struct{}
